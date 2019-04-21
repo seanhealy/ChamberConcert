@@ -1,4 +1,5 @@
-# VinylBite
+# Hello
+
 ## Requirements
 
 `node@10`
@@ -8,3 +9,7 @@
 
 1. `npm install`
 1. `npm start`
+
+## Notes
+
+For node side we'll need something like `audio-analyser`.
