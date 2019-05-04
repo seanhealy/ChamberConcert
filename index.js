@@ -94,10 +94,12 @@ var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 // create Oscillator node
 var oscillator;
 
-document.body.addEventListener("keydown", () => {
-  startPlaying();
+document.body.addEventListener("keydown", event => {
+  if (event.key === "b" && !event.repeat) {
+    startPlaying();
+  }
 });
-document.body.addEventListener("keyup", () => {
+document.body.addEventListener("keyup", event => {
   stopPlaying();
 });
 
