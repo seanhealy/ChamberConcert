@@ -34,6 +34,7 @@ var canvasCtx = canvas.getContext("2d");
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
+  canvas.height = 480;
 }
 
 resizeCanvas();
@@ -67,7 +68,7 @@ function draw() {
     if (relevantFrequency(i)) {
       canvasCtx.fillStyle = "#2ad621";
     } else {
-      canvasCtx.fillStyle = "rgb(255,0,0)";
+      canvasCtx.fillStyle = "#ca0601";
     }
     canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
 

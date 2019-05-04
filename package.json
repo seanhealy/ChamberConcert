@@ -6,6 +6,7 @@
   "scripts": {
     "start": "parcel index.html *.html",
     "build": "parcel build index.html *.html --out-dir docs",
+    "clean": "rm -rf docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
