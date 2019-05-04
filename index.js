@@ -1,6 +1,6 @@
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = audioCtx.createAnalyser();
-analyzer.smoothingTimeConstant = 0;
+analyser.smoothingTimeConstant = 0;
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log("getUserMedia supported.");
