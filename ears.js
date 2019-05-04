@@ -63,14 +63,14 @@ function draw() {
   var x = 0;
 
   for (var i = 0; i < bufferLength; i++) {
-    barHeight = dataArray[i];
+    barHeight = dataArray[i] * 1.7;
 
     if (relevantFrequency(i)) {
       canvasCtx.fillStyle = "#2ad621";
     } else {
       canvasCtx.fillStyle = "#ca0601";
     }
-    canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+    canvasCtx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
     x += barWidth + 1;
   }
