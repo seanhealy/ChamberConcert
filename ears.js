@@ -32,8 +32,12 @@ analyser.getByteTimeDomainData(dataArray);
 var canvas = document.getElementById("oscilloscope");
 var canvasCtx = canvas.getContext("2d");
 
-const WIDTH = canvas.clientWidth;
-const HEIGHT = canvas.clientHeight;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 // draw an oscilloscope of the current audio source
 
@@ -45,9 +49,12 @@ const timeThreshold = 20;
 function draw() {
   requestAnimationFrame(draw);
 
+  const WIDTH = canvas.clientWidth;
+  const HEIGHT = canvas.clientHeight;
+
   analyser.getByteFrequencyData(dataArray);
 
-  canvasCtx.fillStyle = "rgb(0, 0, 0)";
+  canvasCtx.fillStyle = "rgba(0, 0, 0, 0.1)";
   canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
   var barWidth = (WIDTH / bufferLength) * 0.9;
@@ -58,7 +65,7 @@ function draw() {
     barHeight = dataArray[i];
 
     if (relevantFrequency(i)) {
-      canvasCtx.fillStyle = "rgb(0,255,0)";
+      canvasCtx.fillStyle = "#2ad621";
     } else {
       canvasCtx.fillStyle = "rgb(255,0,0)";
     }
@@ -111,7 +118,9 @@ function relevantFrequency(index) {
 
 function recordCharacter({ binaryString, intValue }) {
   const character = String.fromCharCode(intValue);
-  numbersView.innerHTML = `${binaryString} -- ${intValue} -- ${character}`;
+  numbersView.innerHTML = `0x${binaryString} -- ${intValue
+    .toString()
+    .padStart(3, 0)} (${character})`;
 
   historyView.innerHTML = historyView.innerHTML + character;
 }

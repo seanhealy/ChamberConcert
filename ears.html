@@ -1,12 +1,13 @@
 <html>
   <head>
-    <title>Sweet</title>
+    <include src="head.html"></include>
   </head>
-  <body>
-    <canvas id="oscilloscope" width="640"></canvas>
+  <body class="crt">
+    <include src="navigation.html"></include>
+    <canvas id="oscilloscope"></canvas>
 
     <pre id="numbers"></pre>
-    <pre id="history"></pre>
+    <pre id="history">❯❯❯ </pre>
 
     <script src="./ears.js"></script>
   </body>
