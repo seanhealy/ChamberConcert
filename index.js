@@ -92,26 +92,32 @@
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // create Oscillator node
-var oscillator;
+var oscillators = new Array(8);
 
 document.body.addEventListener("keydown", event => {
-  if (event.key === "b" && !event.repeat) {
-    startPlaying();
+  if (event.key >= "1" && event.key <= "8" && !event.repeat) {
+    startPlaying(parseInt(event.key));
   }
 });
 document.body.addEventListener("keyup", event => {
-  stopPlaying();
+  if (event.key >= "1" && event.key <= "8" && !event.repeat) {
+    stopPlaying(parseInt(event.key));
+  }
 });
 
-function startPlaying() {
-  oscillator = audioCtx.createOscillator();
+function startPlaying(key) {
+  console.log("[start] " + key);
+  var oscillator = audioCtx.createOscillator();
 
   oscillator.type = "sine";
-  oscillator.frequency.value = 1400; // value in hertz
+  oscillator.frequency.value = 900 + (50 * key); // value in hertz
   oscillator.connect(audioCtx.destination);
   oscillator.start();
+  oscillators[key-1] = oscillator;
 }
 
-function stopPlaying() {
-  oscillator.stop();
+function stopPlaying(key) {
+  console.log("[stop] " + event.key);
+  oscillators[key-1].stop();
+  oscillators[key-1] = null;
 }
