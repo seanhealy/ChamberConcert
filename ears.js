@@ -24,7 +24,6 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 analyser.fftSize = 2048;
-// analyser.fftSize = 32;
 var bufferLength = analyser.frequencyBinCount;
 var dataArray = new Uint8Array(bufferLength);
 analyser.getByteTimeDomainData(dataArray);
@@ -71,7 +70,6 @@ function draw() {
   const binaryString = getBits(dataArray).join("");
   const intValue = parseInt(binaryString, 2);
 
-  // console.log(Date.now() - lastChange);
   if (lastIntValue === intValue) {
     if (!recordedCharacter && Date.now() - lastChange > timeThreshold) {
       recordCharacter({ binaryString, intValue });
