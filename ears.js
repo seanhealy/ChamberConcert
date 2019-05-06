@@ -36,7 +36,6 @@ function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = 480;
 }
-
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
