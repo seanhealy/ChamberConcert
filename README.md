@@ -8,7 +8,12 @@
 ## Getting Started
 
 1. `npm install`
-1. `npm start`
+2. `npm start`
+
+## Releasing
+
+1. `npm run build`
+2. Push to master.
 
 ## Notes
 
